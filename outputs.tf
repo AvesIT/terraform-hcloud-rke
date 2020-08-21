@@ -20,26 +20,6 @@ output "kube_config_path" {
 }
 
 output "api_server_url" {
-  description = "URL of the Kubernetes API server"
-  value = rke_cluster.this.api_server_url
-}
-
-output "client_cert" {
-  description = "Admin client certificate"
-  value = rke_cluster.this.client_cert
-}
-
-output "client_key" {
-  description = "Admin client key"
-  value = rke_cluster.this.client_key
-}
-
-output "ca_cert" {
-  description = "Cluster CA Certificate"
-  value = rke_cluster.this.ca_crt
-}
-
-output "api_server_url" {
   description = "RKE k8s cluster api server url "
   value       = rke_cluster.this.api_server_url
 }
