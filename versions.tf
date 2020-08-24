@@ -4,23 +4,23 @@ terraform {
   required_providers {
     hcloud = {
       source  = "hetznercloud/hcloud"
-      version = "~> 1.14"
+      version = "~> 1.14.0"
     }
     local = {
       source  = "hashicorp/local"
-      version = "~> 1.4"
+      version = "~> 1.4.0"
     }
     rke = {
       source  = "rancher/rke"
-      version = "~> 1.0"
+      version = "~> 1.0.0"
     }
     template = {
       source  = "hashicorp/template"
-      version = "~> 2.1"
+      version = "~> 2.1.0"
     }
     null = {
       source  = "hashicorp/null"
-      version = "~> 2.1"
+      version = "~> 2.1.0"
     }
   }
 }
