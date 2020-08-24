@@ -11,12 +11,12 @@ output "this" {
 
 output "hcloud_network_id" {
   description = "Hetzner network id"
-  value = hcloud_network.this.id
+  value       = hcloud_network.this.id
 }
 
 output "kube_config_path" {
   description = "Contents of the kube_config file"
-  value = local_file.kube_cluster_yaml.filename
+  value       = local_file.kube_cluster_yaml.filename
 }
 
 output "api_server_url" {
