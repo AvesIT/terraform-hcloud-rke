@@ -51,10 +51,10 @@ resource "rke_cluster" "this" {
   dynamic nodes {
     for_each = local.nodes_with_address
     content {
-      address = nodes.value.address
-      user    = "root"
-      role    = nodes.value.role
-      ssh_key = var.ssh_private_key
+      address           = nodes.value.address
+      user              = "root"
+      role              = nodes.value.role
+      ssh_key           = var.ssh_private_key
       hostname_override = nodes.value.name
     }
   }
@@ -62,10 +62,10 @@ resource "rke_cluster" "this" {
   addons_include = var.addons_include
 
   upgrade_strategy {
-    drain                        = true
+    drain = true
 
     drain_input {
-      force = true
+      force              = true
       delete_local_data  = true
       ignore_daemon_sets = true
     }
@@ -79,20 +79,20 @@ resource "local_file" "kube_cluster_yaml" {
 
 
 resource "hcloud_network" "this" {
-  name = "terraform-hcloud-rke-${path.module}"
+  name     = "terraform-hcloud-rke-${path.module}"
   ip_range = "10.98.0.0/16"
 }
 
 resource "hcloud_network_subnet" "this" {
-  network_id = hcloud_network.this.id
-  type = "server"
-  ip_range = hcloud_network.this.ip_range
+  network_id   = hcloud_network.this.id
+  type         = "server"
+  ip_range     = hcloud_network.this.ip_range
   network_zone = "eu-central"
 }
-  
+
 resource "hcloud_server_network" "this" {
   for_each = var.nodes
-  
-  server_id = hcloud_server.this[each.key].id
+
+  server_id  = hcloud_server.this[each.key].id
   network_id = hcloud_network.this.id
 }
