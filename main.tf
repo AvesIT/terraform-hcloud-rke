@@ -94,5 +94,5 @@ resource "hcloud_server_network" "this" {
   for_each = var.nodes
 
   server_id  = hcloud_server.this[each.key].id
-  network_id = hcloud_network.this.id
+  subnet_id = hcloud_network_subnet.this.id
 }
