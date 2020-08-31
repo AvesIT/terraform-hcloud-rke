@@ -70,6 +70,9 @@ resource "rke_cluster" "this" {
       ignore_daemon_sets = true
     }
   }
+  ingress {
+    provider = var.ingress_provider
+  }
 }
 
 resource "local_file" "kube_cluster_yaml" {
@@ -93,6 +96,6 @@ resource "hcloud_network_subnet" "this" {
 resource "hcloud_server_network" "this" {
   for_each = var.nodes
 
-  server_id  = hcloud_server.this[each.key].id
+  server_id = hcloud_server.this[each.key].id
   subnet_id = hcloud_network_subnet.this.id
 }
