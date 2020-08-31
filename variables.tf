@@ -50,3 +50,9 @@ variable "addons_include" {
     "https://raw.githubusercontent.com/hetznercloud/csi-driver/v1.2.3/deploy/kubernetes/hcloud-csi.yml",
   ]
 }
+
+variable "ingress_provider" {
+  description = "Ingress provider to use"
+  type        = string
+  default     = "ingress"
+}
