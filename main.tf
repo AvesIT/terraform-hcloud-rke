@@ -1,5 +1,5 @@
 resource "hcloud_ssh_key" "this" {
-  name       = "terraform-hcloud-rke"
+  name       = "terraform-hcloud-rke-${path.module}-${terraform.workspace}"
   public_key = var.ssh_public_key
 }
 
@@ -82,7 +82,7 @@ resource "local_file" "kube_cluster_yaml" {
 
 
 resource "hcloud_network" "this" {
-  name     = "terraform-hcloud-rke-${path.module}"
+  name     = "terraform-hcloud-rke-${path.module}-${terraform.workspace}"
   ip_range = "10.98.0.0/16"
 }
 
