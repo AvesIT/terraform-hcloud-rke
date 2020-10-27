@@ -1,12 +1,12 @@
 resource "hcloud_ssh_key" "this" {
-  name       = "terraform-hcloud-rke-${path.module}-${terraform.workspace}"
+  name       = "terraform-hcloud-rke-${var.cluster_name}"
   public_key = var.ssh_public_key
 }
 
 resource "hcloud_server" "this" {
   for_each = var.nodes
 
-  name        = each.value.name
+  name        = each.value.name-${var.cluster_name}
   image       = var.image
   server_type = each.value.server_type
 
@@ -61,6 +61,8 @@ resource "rke_cluster" "this" {
 
   addons_include = var.addons_include
 
+  cluster_name = var.cluster_name
+
   upgrade_strategy {
     drain = true
 
@@ -82,7 +84,7 @@ resource "local_file" "kube_cluster_yaml" {
 
 
 resource "hcloud_network" "this" {
-  name     = "terraform-hcloud-rke-${path.module}-${terraform.workspace}"
+  name     = "terraform-hcloud-rke-${var.cluster_name}"
   ip_range = "10.98.0.0/16"
 }
 
