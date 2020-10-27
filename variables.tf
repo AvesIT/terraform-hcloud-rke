@@ -56,3 +56,9 @@ variable "ingress_provider" {
   type        = string
   default     = "ingress"
 }
+
+variable "cluster_name" {
+  description = "Name of the K8s cluster to create"
+  type = string
+  default = "default"
+}
