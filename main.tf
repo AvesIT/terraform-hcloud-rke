@@ -6,7 +6,7 @@ resource "hcloud_ssh_key" "this" {
 resource "hcloud_server" "this" {
   for_each = var.nodes
 
-  name        = each.value.name-${var.cluster_name}
+  name        = "each.value.name-${var.cluster_name}"
   image       = var.image
   server_type = each.value.server_type
 
