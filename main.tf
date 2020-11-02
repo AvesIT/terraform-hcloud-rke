@@ -63,7 +63,9 @@ resource "rke_cluster" "this" {
 
   cluster_name = var.cluster_name
 
-  cloud_provider = "external"
+  cloud_provider = {
+    name = "external"
+  }
 
   upgrade_strategy {
     drain = true
