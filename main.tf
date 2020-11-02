@@ -79,6 +79,12 @@ resource "rke_cluster" "this" {
   ingress {
     provider = var.ingress_provider
   }
+  
+  services {
+    kubelet {
+      extra_args = [ "--cloud-provider=external" ]
+    }
+  }
 }
 
 resource "local_file" "kube_cluster_yaml" {
