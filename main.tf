@@ -82,7 +82,9 @@ resource "rke_cluster" "this" {
   
   services {
     kubelet {
-      extra_args = [ "--cloud-provider=external" ]
+      extra_args = { 
+        cloud-provider = "external" 
+      }
     }
   }
 }
