@@ -6,7 +6,7 @@ resource "hcloud_ssh_key" "this" {
 resource "hcloud_server" "this" {
   for_each = var.nodes
 
-  name        = "${each.value.name}"
+  name        = each.value.name
   image       = var.image
   server_type = each.value.server_type
 
@@ -62,6 +62,8 @@ resource "rke_cluster" "this" {
   addons_include = var.addons_include
 
   cluster_name = var.cluster_name
+
+  cloud_provider = "external"
 
   upgrade_strategy {
     drain = true
