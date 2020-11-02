@@ -63,7 +63,7 @@ resource "rke_cluster" "this" {
 
   cluster_name = var.cluster_name
 
-  cloud_provider = {
+  cloud_provider {
     name = "external"
   }
 
